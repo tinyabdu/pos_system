@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+/* Tell Tailwind v4 to use class-based dark mode (the .dark class on <html>)
+   instead of the default prefers-color-scheme media query */
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-dark-bg: #111111;
+  --color-dark-surface: #1a1a1a;
+  --color-dark-text: #f1f1f1;
+  --color-dark-border: #2a2a2a;
+  --color-light-bg: #f5f5f5;
+  --color-light-surface: #ffffff;
+  --color-light-text: #111111;
+  --color-light-border: #e8e8e8;
+}
+
+/* Expose design tokens as CSS custom properties so Tailwind dark: variants resolve */
+:root {
+  --color-dark-bg: #111111;
+  --color-dark-surface: #1a1a1a;
+  --color-dark-text: #f1f1f1;
+  --color-dark-border: #2a2a2a;
+  --color-light-bg: #f5f5f5;
+  --color-light-surface: #ffffff;
+  --color-light-text: #111111;
+  --color-light-border: #e8e8e8;
+}
+
+
+/* Only animate the body background when the dark class changes (for theme switch)
+   — NOT on interactive elements so clicks feel instant */
+html {
+  transition: none;
+}
+
+html.dark body {
+  background-color: var(--color-dark-bg);
+  color: var(--color-dark-text);
+}
+
+body {
+  background-color: var(--color-light-bg);
+  color: var(--color-light-text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Smooth theme background transition ONLY on the body — not buttons */
+body {
+  transition: background-color 0.2s ease;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4d4d4;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #333;
+}
