@@ -41,3 +41,7 @@ To connect this frontend to a real backend, the following API endpoints would be
 
 1. Install dependencies: `npm install`
 2. Start the development server: `npm run dev`
+
+
+# Testing
+- `address` - https://pos-system-six-ebon.vercel.app/login
